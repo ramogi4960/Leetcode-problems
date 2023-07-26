@@ -1,3 +1,13 @@
-a = [1, 2, 3, 4, 5]
-y = a.pop(-1)
-print(a, y)
+def first(message):
+    def second():
+        print('Wrapper function 1')
+        return message().upper()
+    return second
+
+
+@first
+def my_name():
+    return 'My name is Kevin'
+
+
+print(my_name())
