@@ -58,7 +58,7 @@ class Twitter:
         finally:
             self.created += 1
 
-    def getNewsFeed(self, userId: int) -> List[int]:
+    def getNewsFeed(self, userId: int) -> [int]:
         if userId not in self.users.keys():
             self.users[userId] = [[], []]
             return self.users[userId][1]
