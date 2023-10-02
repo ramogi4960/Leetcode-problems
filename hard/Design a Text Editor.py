@@ -61,53 +61,26 @@ Follow-up: Could you find a solution with time complexity of O(k) per call?
 class TextEditor:
 
     def __init__(self):
-        # initialize the text and curcor position
-        self.cursor = 0
-        self.text = ''
-        # ing
+        # Two stacks that are relative to the cursor, r is in reverse
+        self.l, self.r = [], []
 
     def addText(self, text: str) -> None:
-        # addtext to where the curcor is and increment the cursor by len(text)
-        if self.cursor == len(self.text):
-            self.text += text
-        else:
-            self.text = self.text.replace(self.text[self.cursor], text + self.text[self.cursor])
-        self.cursor += len(text)
+        self.l.extend(list(text))
 
     def deleteText(self, k: int) -> int:
-        # delete k characters to the left of self.cursor and return the number of deleted characters
-        count = 0
-        x = list(self.text)
-        while self.cursor > 0 and k > 0:
-            del x[self.cursor - 1]
-            self.cursor -= 1
-            count += 1
-            k -= 1
-
-        self.text = ''.join(x)
-        return count
+        for _ in range((d := min(k, len(self.l)))):
+            self.l.pop()
+        return d
 
     def cursorLeft(self, k: int) -> str:
-        # moves cursor to the left and returns the first 10 characters to the left
-        while self.cursor > 0 and k > 0:
-            self.cursor -= 1
-            k -= 1
-
-        if self.cursor < 11:
-            return self.text[:self.cursor]
-        else:
-            return self.text[self.cursor - 10:self.cursor]
+        for _ in range(min(k, len(self.l))):
+            self.r.append(self.l.pop())
+        return ''.join(self.l[-10:])
 
     def cursorRight(self, k: int) -> str:
-        # moves cursor to the right and returns the first 10 characters to the left
-        while self.cursor < len(self.text) and k > 0:
-            self.cursor += 1
-            k -= 1
-
-        if self.cursor < 11:
-            return self.text[:self.cursor]
-        else:
-            return self.text[self.cursor - 10:self.cursor]
+        for _ in range(min(k, len(self.r))):
+            self.l.append(self.r.pop())
+        return ''.join(self.l[-10:])
 
 # Your TextEditor object will be instantiated and called as such:
 # obj = TextEditor()
