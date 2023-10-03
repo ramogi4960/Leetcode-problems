@@ -28,7 +28,7 @@ Constraints:
 
 
 class Solution:
-    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+    def smallerNumbersThanCurrent(self, nums: [int]) -> [int]:
         final = []
         for i in range(len(nums)):
             count = 0
