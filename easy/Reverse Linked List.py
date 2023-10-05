@@ -11,12 +11,16 @@ Input: head = []
 Output: []
 """
 
+from sys import path
+
 
 # Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+class ListNode(object):
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
 class Solution(object):
     def reverseList(self, head):
         a = []
@@ -41,5 +45,5 @@ class Solution(object):
             return x
 
 
-
-
+if __name__ == "__main__":
+    print(*path, sep='\n')
