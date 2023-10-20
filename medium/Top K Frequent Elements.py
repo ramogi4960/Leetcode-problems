@@ -28,7 +28,7 @@ class Solution:
         create a set out of the [int]
         create a dict and add key value pairs by iterating through the set, adding the set items as keys and their count
         as their respective values
-        sort the dict according the the dict values
+        sort the dict according the dict values
         return a list of the first k values
         """
         my_dict = dict()
