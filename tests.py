@@ -1,3 +1,3 @@
-x = [1, 1, 1, 2, 2, 3]
-for item in set(x):
-    print(item)
+x = open("E:\Projects\Base Python Projects\leetcode\my_text.txt", "r")
+print(x.read())
+x.close()
