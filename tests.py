@@ -1,3 +1,4 @@
-x = open("E:\Projects\Base Python Projects\leetcode\my_text.txt", "r")
-print(x.read())
-x.close()
+from time import time
+y = time()
+x = list(range(100000000))
+print(time() - y)
