@@ -40,7 +40,7 @@ Constraints:
 
 
 class Solution:
-    def reductionOperations(self, nums: List[int]) -> int:
+    def reductionOperations(self, nums: [int]) -> int:
         if len(set(nums)) == 1: return 0
         """
         Algorithm:
