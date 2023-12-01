@@ -35,9 +35,9 @@ key and prefix consist of only lowercase English letters.
 At most 50 calls will be made to insert and sum.
 """
 
-
+import re
 class MapSum:
-    import re
+
 
     def __init__(self):
         self.words = {}
