@@ -34,7 +34,7 @@ Constraints:
 class Solution:
     def buyChoco(self, prices: [int], money: int) -> int:
         prices.sort()
-        if prices[0] + prices[1] > money:
+        if sum(prices[:2]) > money:
             return money
         else:
-            return money - (prices[0] + prices[1])
+            return money - sum(prices[:2])
