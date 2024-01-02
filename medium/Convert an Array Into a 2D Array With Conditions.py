@@ -35,7 +35,7 @@ Constraints:
 
 
 class Solution:
-    def findMatrix(self, nums: List[int]) -> List[List[int]]:
+    def findMatrix(self, nums: [int]) -> [[int]]:
         "Create a dictionary with the count of each item as a value"
         "Sort the dictionary according to count"
         "Create a matrix with maximum number of rows as maximum count"
