@@ -34,7 +34,7 @@ Constraints:
 
 
 class Solution:
-    def minOperations(self, nums: List[int]) -> int:
+    def minOperations(self, nums: [int]) -> int:
         from collections import Counter
 
         def other(number: int) -> int:
