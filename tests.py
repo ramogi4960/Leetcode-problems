@@ -1,3 +1,2 @@
-a = {"a": 12}
-b = {"b": 11, "c": 13}
-print({**a, **b}) # {'a': 12, 'b': 11, 'c': 13}
+from collections import Counter
+print(*Counter([14,12,14,14,12,14,14,12,12,12,12,14,14,12,14,14,14,12,12]).values(), sep="\n")
