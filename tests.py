@@ -1,2 +1,3 @@
-from collections import Counter
-print(*Counter([14,12,14,14,12,14,14,12,12,12,12,14,14,12,14,14,14,12,12]).values(), sep="\n")
+from platform import machine, processor, system, version, python_implementation, python_version, python_version_tuple
+
+print(*python_version_tuple(), sep="\n")
