@@ -34,10 +34,10 @@ Constraints:
 At most 2 * 105 calls will be made to insert, remove, and getRandom.
 There will be at least one element in the data structure when getRandom is called.
 """
+from random import choice
 
 
 class RandomizedSet:
-    from random import choice
 
     def __init__(self):
         self.set = set()
