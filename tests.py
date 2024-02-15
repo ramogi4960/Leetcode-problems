@@ -1,14 +1,7 @@
-options = []
-start = "12"
-l = 2
-while l < 10:
-    options.append(int(start))
-    if start[-1] == "9":
-        l += 1
-        start = "".join([str(item) for item in range(1, l+1)])
-    else:
-        temp = "".join(chr(ord(item) + 1) for item in start)
-        start = temp
-
-# print(*options, sep="\n")
-print(len(options))
+x = [[19043, 980957] [19079, 980921]
+[19079, 980921] [19289, 980711]
+[19289, 980711] [19379, 980621]
+[19379, 980621] [19421, 980579]
+[19421, 980579] [19541, 980459]
+[19541, 980459] [19577, 980423]
+[19577, 980423] [19583, 980417]]
