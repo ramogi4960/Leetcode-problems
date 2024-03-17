@@ -65,24 +65,23 @@ class Solution:
         # start iteration through intervals using a while loop so that it stops at end of the list
         length = len(intervals)
         index = 0
-        # Start iteration through intervals
         while index < length:
             if newInterval[0] < intervals[index][0]:
                 temp = [newInterval[0], ]
                 while index < length:
                     if newInterval[1] < intervals[index][0]:
-                        return final + [newInterval, ] + intervals[index: ]
-                    elif newInterval[1] in range(intervals[index][0], intervals[index][1] + 1):
+                        return final + [newInterval, ] + intervals[index:]
+                    elif newInterval[1] < intervals[index][1] + 1:
                         return final + [(temp + [intervals[index][1], ]), ] + intervals[index + 1:]
                     index += 1
-                return final + [temp + [newInterval[1], ],]
-            elif newInterval[0] in range(intervals[index][0], intervals[index][1] + 1):
+                return final + [temp + [newInterval[1], ], ]
+            elif newInterval[0] < intervals[index][1] + 1:
                 temp = [intervals[index][0], ]
                 while index < length:
                     if newInterval[1] < intervals[index][0]:
-                        return final + [temp + [newInterval[1], ], ] + intervals[index: ]
-                    elif newInterval[1] in range(intervals[index][0], intervals[index][1] + 1):
-                        return final + [temp + [intervals[index][1], ], ] + intervals[index + 1: ]
+                        return final + [temp + [newInterval[1], ], ] + intervals[index:]
+                    elif newInterval[1] < intervals[index][1] + 1:
+                        return final + [temp + [intervals[index][1], ], ] + intervals[index + 1:]
                     index += 1
                 return final + [temp + [newInterval[1], ], ]
             else:
