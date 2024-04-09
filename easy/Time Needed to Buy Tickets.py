@@ -37,7 +37,7 @@ n == tickets.length
 
 
 class Solution:
-    def timeRequiredToBuy(self, tickets: List[int], k: int) -> int:
+    def timeRequiredToBuy(self, tickets: [int], k: int) -> int:
         """
         Create a count variable
         Iterate through tickets
