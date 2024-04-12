@@ -23,3 +23,25 @@ Constraints:
 nums[i] is either 0 or 1.
 0 <= k <= nums.length
 """
+
+
+class Solution:
+    def longestOnes(self, nums: [int], k: int) -> int:
+        longest = 0
+        current = 0
+        temp = k
+        left = right = 0
+        while right < len(nums):
+            if temp:
+                current += 1
+                if nums[right] == 0: temp -= 1
+            else:
+                if nums[right] == 1: current += 1
+                else:
+                    while nums[left] == 1:
+                        left += 1
+                        current -= 1
+                    left += 1
+            right += 1
+            if current > longest: longest = current
+        return longest
