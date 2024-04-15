@@ -11,8 +11,6 @@ Input: head = []
 Output: []
 """
 
-from sys import path
-
 
 # Definition for singly-linked list.
 class ListNode(object):
@@ -20,30 +18,49 @@ class ListNode(object):
         self.val = val
         self.next = next
 
+#
+# class Solution(object):
+#     def reverseList(self, head):
+#         a = []
+#         if not head:
+#             return head
+#         else:
+#             current = head
+#             while current.next:
+#                 a.append(current.val)
+#                 current = current.next
+#             a.append(current.val)
+#             a = a[::-1]
+#             x = None
+#             for item in range(len(a)):
+#                 if not x:
+#                     x = ListNode(a[item])
+#                 else:
+#                     current = x
+#                     while current.next:
+#                         current = current.next
+#                     current.next = ListNode(a[item])
+#             return x
 
-class Solution(object):
-    def reverseList(self, head):
-        a = []
-        if not head:
-            return head
-        else:
-            current = head
-            while current.next:
-                a.append(current.val)
-                current = current.next
-            a.append(current.val)
-            a = a[::-1]
-            x = None
-            for item in range(len(a)):
-                if not x:
-                    x = ListNode(a[item])
-                else:
-                    current = x
-                    while current.next:
-                        current = current.next
-                    current.next = ListNode(a[item])
-            return x
+# OPTIMIZED SOLUTION O(n)
 
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        """
+        Optimized O(n) solution
+        Create a return node which starts as None.
+        Through each iteration through head:
+            - the next of the current becomes current
+            - the next of the current becomes a previously created variable prev which starts as None
 
-if __name__ == "__main__":
-    print(*path, sep='\n')
+        """
+        if not head: return head
+        last = None
+        current = head
+        while current:
+            temp = current.next
+            first = current
+            first.next = last
+            last = first
+            current = temp
+        return last
