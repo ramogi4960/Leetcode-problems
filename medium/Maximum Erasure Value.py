@@ -28,7 +28,7 @@ Constraints:
 """
 
 class Solution:
-    def maximumUniqueSubarray(self, nums: List[int]) -> int:
+    def maximumUniqueSubarray(self, nums: [int]) -> int:
         left, max_sum, current_sum = 0, nums[0], nums[0]
         numbers = {
             nums[0]: 0
