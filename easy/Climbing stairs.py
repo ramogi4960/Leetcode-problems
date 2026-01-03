@@ -22,15 +22,11 @@ Explanation: There are three ways to climb to the top.
 
 class Solution(object):
     def climbStairs(self, n):
-        x = n
-        def climb(x):
-            if n == 1:
-                return 1
-            if n == 2:
-                return 2
-            return climb(n-1) + climb(n-2)
+        if n == 1: return 1
+        if n == 2: return 2
+        fib = [1, 2]
+        for number in range(n - 2):
+            fib[0], fib[1] = fib[1], fib[0]
+            fib[1] = fib[0] + fib[1]
 
-        return climb(n)
-
-
-print(Solution().climbStairs(44))
+        return fib[1]
