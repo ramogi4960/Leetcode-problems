@@ -6,52 +6,49 @@ Output: "100"
 
 Input: a = "1010", b = "1011"
 Output: "10101
+
+Constraints:
+
+1 <= a.length, b.length <= 104
+a and b consist only of '0' or '1' characters.
+Each string does not contain leading zeros except for the zero itself.
 """
 
 
-class Solution(object):
-    def addBinary(self, a, b):
-        if len(a) > len(b):
-            for i in range(len(a) - len(b)):
-                n = list(b)
-                n.insert(0, '0')
-                b = ''.join(n)
-        elif len(b) > len(a):
-            for i in range(len(b) - len(a)):
-                n = list(a)
-                n.insert(0, '0')
-                a = ''.join(n)
+class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        a = ((10000 - len(a)) * "0") + a
+        b = ((10000 - len(b)) * "0") + b
 
-        x, y, final = -1, 0, []
-        for i in range(len(a)):
-            if a[x] == '1' and b[x] == '1' and y == 0:
-                final.insert(0, '0')
-                y = 1
-            elif a[x] == '1' and b[x] == '1' and y == 1:
-                final.insert(0, '1')
-                y = 1
-            elif a[x] == '0' and b[x] == '0' and y == 0:
-                final.insert(0, '0')
-                y = 0
-            elif a[x] == '0' and b[x] == '0' and y == 1:
-                final.insert(0, '1')
-                y = 0
-            elif a[x] == '1' and b[x] == '0' and y == 0:
-                final.insert(0, '1')
-                y = 0
-            elif a[x] == '0' and b[x] == '1' and y == 0:
-                final.insert(0, '1')
-                y = 0
-            elif a[x] == '1' and b[x] == '0' and y == 1:
-                final.insert(0, '0')
-                y = 1
-            elif a[x] == '0' and b[x] == '1' and y == 1:
-                final.insert(0, '0')
-                y = 1
+        rem_bit = False
+        final_array = []
 
-            x -= 1
-        if not y:
-            return ''.join(final)
-        else:
-            final.insert(0, '1')
-            return ''.join(final)
+        for index in range(9999, -1, -1):
+            current_sum = (a[index] + b[index]).strip("0")
+            if current_sum == "":
+                if rem_bit:
+                    final_array.append("1")
+                    rem_bit = False
+                else:
+                    final_array.append("0")
+            elif current_sum == "1":
+                if rem_bit:
+                    final_array.append("0")
+                else:
+                    final_array.append("1")
+            elif current_sum == "11":
+                if rem_bit:
+                    final_array.append("1")
+                else:
+                    final_array.append("0")
+                    rem_bit = True
+
+        if rem_bit: final_array.append("1")
+
+        final_string = ""
+        while final_array:
+            final_string += final_array.pop()
+        final_string = final_string.lstrip("0")
+
+        if not final_string: return "0"
+        return final_string.lstrip("0")
